@@ -120,7 +120,8 @@ def viewsales(inventory_id):
     inventory_details=InventoryModel.query.filter_by(id=inventory_id).first()
     #inventory_sales=SalesModel.query.filter_by(id=inventory_id).first()
     inventory_sales=inventory_details.sales
-    return redirect(url_for('inventories.html', all_sales =inventory_sales))
+    return redirect(url_for('inventories'))
+    
     
 @app.route("/editInventory/<inventory_id>", methods=['POST'])
 def editInventory(inventory_id):
@@ -138,7 +139,22 @@ def editInventory(inventory_id):
             flash("Error occurred while editing record","success")
             return redirect(url_for('inventories'))
 
+@app.route('/delete_sale/<item_id>', methods=['POST'])
+def delete_sale(item_id):
+    record =SalesModel.query.filter_by(id=item_id).first()
+    
+
+    if record:
+        db.session.delete(record)
+        db.session.commit()
+        flash("Successifully deleted","warning")
+        return redirect(url_for('inventories'))
         
+    else:
+        flash("Error!! Operation unsuccessiful", "warning")
+        return redirect(url_for('inventories'))
+
+    
 
 
 
