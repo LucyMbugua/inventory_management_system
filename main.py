@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
+import pygal
 #import config class
 from settings.configs import DevelopmentConfig, ProductionConfig
 # import db connection
@@ -160,8 +161,17 @@ def delete_sale(item_id):
 
 
 
-@app.route('/charts')
-def charts():
-    return render_template('charts.html')
+@app.route('/dashboard')
+def dashboard():
+    total_inventories=len(InventoryModel.fetch_all())
+    total_products =len(InventoryModel.query.filter_by(inventory_type="product").all())
+    total_services =len(InventoryModel.query.filter_by(inventory_type="service").all())
+
+    pie_chart = pygal.Pie()
+    pie_chart.title = 'Products vs Services Inventory'
+    pie_chart.add('Products', total_products)
+    pie_chart.add('Services', total_services)
+    pie= pie_chart.render_data_uri()
+    return render_template('dashboard.html', total_inventories=total_inventories, total_products=total_products, total_services=total_services, chart=pie)
 
 

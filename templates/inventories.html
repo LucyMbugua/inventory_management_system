@@ -155,7 +155,7 @@ Inventory Management | IMS
                       </button>
                     </div>
                     <div class="modal-body">
-                      <form>
+                      
                         <!-- view sale table -->
                         <div class="mt-1">
                           <table class="table">
@@ -220,7 +220,7 @@ Inventory Management | IMS
                             </tbody>
                           </table>
                         </div>
-                      </form>
+                      
                     </div>
                     
                   </div>
@@ -249,8 +249,8 @@ Inventory Management | IMS
                           <label for="exampleFormControlSelect1">Type</label>
                           <select class="form-control" name="inventory_type">
                             <option selected value="{{each.inventory_type}}">{{each.inventory_type}}</option>
-                            <option>Product</option>
-                            <option>Service</option> 
+                            <option value="product">Product</option>
+                            <option value ="service">Service</option> 
                           </select>
                         </div>
                         <div class="form-group">

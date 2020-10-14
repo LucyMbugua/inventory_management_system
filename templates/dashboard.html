@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{%block title%}
+Inventory Management | Dashboard
+{%endblock %}
+
+{%block content%}
+<div class="container mt-5" >
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body" style="display: block;">
+                    <div style="display: flex;">
+                        <p>icon</p>
+                        <h4 class="card-title">Total Inventories</h4>
+                    
+                    </div>
+                    <div>
+                        <h2>{{total_inventories}}</h2>
+                    </div>
+                  
+                </div>
+              </div>
+
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body" style="display: block;">
+                    <div style="display: flex;">
+                        <p>icon</p>
+                        <h4 class="card-title">Total Sales</h4>
+                    
+                    </div>
+                    <div>
+                        <h2>4</h2>
+                    </div>
+                    
+                  
+                </div>
+              </div>
+
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body" style="display: block;">
+                    <div style="display: flex;">
+                        <p>icon</p>
+                        <h4 class="card-title">Total Products</h4>
+                    
+                    </div>
+                    <div>
+                        <h2>{{total_products}}</h2>
+                    </div>
+                    
+                  
+                </div>
+              </div>
+
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body" style="display: block;">
+                    <div style="display: flex;">
+                        <p>icon</p>
+                        <h4 class="card-title">Total Services</h4>
+                    
+                    </div>
+                    <div>
+                        <h2>{{total_services}}</h2>
+                    </div>
+                  
+                </div>
+              </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col mt-5" >
+            <!-- Don't forget the "|safe"! -->
+            <div class="d-flex justify-content-center ml-auto" id="chart">
+                <embed type="image/svg+xml" src= {{ chart|safe }} />
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+{%endblock %}
+
+{%block footer%}
+<h4>welcome again!</h4>
+{%endblock %}
