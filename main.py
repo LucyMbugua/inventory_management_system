@@ -2,13 +2,13 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 import pygal
 #import config class
-from settings.configs import DevelopmentConfig, ProductionConfig
+from settings.configs import Development,Staging,Production
 # import db connection
 from settings.db_connect import conn
 
 app = Flask(__name__)
 #tell flask which config settings to use
-app.config.from_object(DevelopmentConfig)
+app.config.from_object(Staging)
 db = SQLAlchemy(app)
 
 #import models
